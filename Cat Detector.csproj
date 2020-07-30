@@ -190,8 +190,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cat DetectorML.Model\Cat DetectorML.Model.csproj">
-      <Project>{EDCF4018-87B3-48AE-9EB5-37A4692ED615}</Project>
+    <ProjectReference Include="Cat DetectorML.Model\Cat DetectorML.Model.csproj">
+      <Project>{5027a214-7c0b-4bac-9a7b-5d9bd70bc1a0}</Project>
       <Name>Cat DetectorML.Model</Name>
     </ProjectReference>
   </ItemGroup>

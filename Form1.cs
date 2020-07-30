@@ -36,10 +36,26 @@ namespace Cat_Detector
 
         private void predictBtn_Click(object sender, EventArgs e)
         {
-            var input = new ModelInput();
-            input.ImageSource = imagePathTb.Text;
-            ModelOutput result = ConsumeModel.Predict(input);
-            statusRtb.Text=result.Prediction;
+            try
+            {
+                var input = new ModelInput();
+                input.ImageSource = imagePathTb.Text;
+                ModelOutput result = ConsumeModel.Predict(input);
+                if (result.Score[0]<.5 && result.Score[1]<.5)
+                {
+                    statusRtb.Text = $"Neither Cat nor Dog";
+                }
+               else
+                {
+                    float score = (result.Score[0] > result.Score[1] ? result.Score[0] : result.Score[1]);
+                    statusRtb.Text =$"Predicted result: {result.Prediction} with a score {score}";
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }
