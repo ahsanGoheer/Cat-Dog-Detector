@@ -41,13 +41,14 @@ namespace Cat_Detector
                 var input = new ModelInput();
                 input.ImageSource = imagePathTb.Text;
                 ModelOutput result = ConsumeModel.Predict(input);
-                if (result.Score[0]<.5 && result.Score[1]<.5)
+                float score = (result.Score[0] > result.Score[1] ? result.Score[0] : result.Score[1]);
+                if (score<.8)
                 {
                     statusRtb.Text = $"Neither Cat nor Dog";
                 }
                else
                 {
-                    float score = (result.Score[0] > result.Score[1] ? result.Score[0] : result.Score[1]);
+                    
                     statusRtb.Text =$"Predicted result: {result.Prediction} with a score {score}";
                 }
             }
